@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganografi EMD</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Steganografi Gambar dengan Algoritma EMD</h1>
+        
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'embed-tab')">Sisipkan Pesan</button>
+            <button class="tab-button" onclick="openTab(event, 'extract-tab')">Ekstrak Pesan</button>
+        </div>
+
+        <div id="embed-tab" class="tab-content active">
+            <h2>Sisipkan Pesan ke Gambar</h2>
+            <form id="embed-form" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="embed">
+                <div class="form-group">
+                    <label for="embed-image">Pilih Gambar Penutup:</label>
+                    <input type="file" id="embed-image" name="image_file" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label for="secret-message">Pesan Rahasia:</label>
+                    <textarea id="secret-message" name="secret_message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn">Sisipkan Pesan</button>
+            </form>
+
+            <div id="embed-result" class="result-box">
+                </div>
+        </div>
+
+        <div id="extract-tab" class="tab-content">
+            <h2>Ekstrak Pesan dari Gambar</h2>
+            <form id="extract-form" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="extract">
+                <div class="form-group">
+                    <label for="extract-image">Pilih Gambar Stego:</label>
+                    <input type="file" id="extract-image" name="image_file" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn">Ekstrak Pesan</button>
+            </form>
+
+            <div id="extract-result" class="result-box">
+                </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
